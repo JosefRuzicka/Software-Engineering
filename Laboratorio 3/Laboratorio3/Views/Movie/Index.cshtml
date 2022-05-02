@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1>@ViewBag.MainTitle </h1>
+
+<div>
+    <table class ="table" >
+
+        <thead>
+            <tr>
+                <th>Movie title</th>
+                <th>Genre</th>
+                <th>Released date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            { 
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Genre</td>
+                    <td>@item.ReleasedDate</td>
+                </tr>   
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <button> I am a button</button>
+</div>
