@@ -53,10 +53,11 @@ vector<double> NeuralNetwork::predict(vector<double> values){
  */
 
 
-// PREDICT NUEVO
+ // PREDICT NUEVO
 vector<double> NeuralNetwork::predict(vector<double> values) {
     Matrix inputForLayer = Matrix::fromArray(values); // Queda una matriz con una sola columna
     vector<int> neuronasPorCapa = { 5,6 };
+    //vector<int> neuronasPorCapa = { 2 };
     int setDePesos = int(neuronasPorCapa.size()) + 1;
     vector<Matrix> layerOutputs;
     layerOutputs.resize(3);
@@ -75,7 +76,7 @@ vector<double> NeuralNetwork::predict(vector<double> values) {
 }
 
 
-void NeuralNetwork::trainNuevo(vector<double> entrada, vector<double> expectedOutputValue, int epochs) {
+void NeuralNetwork::trainNuevo(vector<double> entrada, vector<double> expectedOutputValue) {
     Matrix input = Matrix::fromArray(entrada); //columna
     Matrix inputForLayer;// = Matrix::fromArray(entrada); //columna
     Matrix target = Matrix::fromArray(expectedOutputValue); // Crea la matriz target a partir del vector con los resultados esperados
@@ -84,6 +85,7 @@ void NeuralNetwork::trainNuevo(vector<double> entrada, vector<double> expectedOu
     Matrix networkOutput;
     int outputLayer = 1;
     vector<int> neuronasPorCapa = { 5,6 };
+    //vector<int> neuronasPorCapa = { 2 };
     int setDePesos = int(neuronasPorCapa.size()) + 1;
     //vector<Matrix> biases;
     //vector<Matrix> pesos;
@@ -104,7 +106,7 @@ void NeuralNetwork::trainNuevo(vector<double> entrada, vector<double> expectedOu
     layerOutputs.resize(3);
 
     // Training.
-    for (int epoch = 0; epoch < epochs; epoch++) {
+    //for (int epoch = 0; epoch < epochs; epoch++) {
         inputForLayer = Matrix::fromArray(entrada);
 
         // Forward propagation de 3 pesos
@@ -116,17 +118,20 @@ void NeuralNetwork::trainNuevo(vector<double> entrada, vector<double> expectedOu
             inputForLayer = tempResults;
         }
         networkOutput = inputForLayer;
-        networkOutput.printMatrix();
+        //networkOutput.printMatrix();
 
         // Calcular error en última capa y ajustar gradiente. layer[layersCount-2
         // Crea la matriz error : Calculando el error de todos los output de nuestra red
         error = Matrix::matrixSubstract(target, networkOutput/* Epoch Output */);
+        //cout << "Error" << endl;
+        //error.printMatrix();
+        //cout << endl;
         // Obtiene la gradiente de la derivada de la funcion de activacion
         gradient = networkOutput.dsigmoid();
         // Multiplica la gradiente por la matriz del error y almacena en la matriz gradiente
-        gradient.multiply(error);           
+        gradient.multiply(error);
         // Multiplica los resultados anteriores por el valor de la tasa de aprendizaje
-        gradient.multiply(this->learningRate);         
+        gradient.multiply(this->learningRate);
         //transponer el output de la capa anterior
         Matrix previousLayerOutputTransposed = Matrix::transpose(layerOutputs[setDePesos - 2]);
         //Multiplica la gradiente por la transpuesta
@@ -176,7 +181,7 @@ void NeuralNetwork::trainNuevo(vector<double> entrada, vector<double> expectedOu
         // Almacena los valores en la matriz de pesos inicial corregida
         pesos[0].addMatrix(weightsPreviousLayerDelta);
         biases[0].addMatrix(layerGradient);
-    }
+    //}
 }
 /*
 void NeuralNetwork::train(vector<double> values, vector<double> expectedValues){
@@ -272,10 +277,12 @@ void NeuralNetwork::fit(vector<vector<double>> values, vector<vector<double>> ex
  */
 
 
-//FIT NUEVO
+ //FIT NUEVO
 void NeuralNetwork::fit(vector<vector<double>> values, vector<vector<double>> expectedValues, int epochs) {
     std::default_random_engine generator;
     std::uniform_int_distribution<int> distribution(0, values.size() - 1);
-    int sampleN = distribution(generator);
-    this->trainNuevo(values[sampleN], expectedValues[sampleN], epochs);
+    for (int epoch = 0; epoch < epochs; epoch++) {
+        int sampleN = distribution(generator);
+        this->trainNuevo(values[sampleN], expectedValues[sampleN]);
+    }
 }

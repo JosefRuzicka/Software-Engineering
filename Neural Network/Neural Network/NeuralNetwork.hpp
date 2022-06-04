@@ -26,7 +26,7 @@ public:
     vector<double> predict(vector<double> values);
 
     void train(vector<double> values, vector<double> expectedValues);
-    void trainNuevo(vector<double> values, vector<double> expectedValues, int epochs);
+    void trainNuevo(vector<double> values, vector<double> expectedValues);
 
     void fit(vector<vector<double> > values, vector<vector<double> > expectedValues, int epochs);
 };

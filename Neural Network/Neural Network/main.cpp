@@ -42,12 +42,14 @@ int main()
     vector<double> output;
     //std::cout << "de vuelta en main";
     //
-        neuralNetwork->fit(values, expectedValues, 50000);
+        neuralNetwork->fit(values, expectedValues, 20000);
+        // 
     //
     //
     //
+        //neuralNetwork->trainNuevo(values, expectedValues, 20000);
         vector<vector<double>> input {
-                vector<double>{0,0,0}, {0,1,0}, {1,0,0}, {1,1,1}
+                vector<double>{0,0,0}, /*{0,1,0}, {1,0,0}, {1,1,1}*/
         };
     //
         for(auto value : values)
