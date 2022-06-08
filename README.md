@@ -5,3 +5,4 @@
 ### Lab4 - HTML & CSS Webpage.
 ### Lab5 - Connecting project to a Database.
 ### Lab6 - Updating Database from webpage
+### Lab7 - Basic Javascript functions
