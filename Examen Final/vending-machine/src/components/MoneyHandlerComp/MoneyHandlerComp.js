@@ -4,12 +4,16 @@ import { PlusMinusButtonsComp } from '../PlusMinusButtonsComp/PlusMinusButtonsCo
 import './MoneyHandlerCompStyle.scss'
 import { calculateTotalCost, handleTransaction } from '../../Utils/MathemathicsHandler';
 import { notifyPaymentSuccess } from "../NotificationsComp/NotificationsComp";
-import { removeTransactionValues } from "../../Utils/DataBaseHandler";
+import { removeTransactionValues, removeItemsFromStorage } from "../../Utils/DataBaseHandler";
 
 export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
   const handlePayment = () => {
     let change = handleTransaction();
-    change >= 0 && (notifyPaymentSuccess(change) && removeTransactionValues());
+    if (change >= 0) {
+      notifyPaymentSuccess(change);
+      removeItemsFromStorage();
+      removeTransactionValues();
+    }
     setReRenderSwitch( !reRenderSwitch );
   };
   return (

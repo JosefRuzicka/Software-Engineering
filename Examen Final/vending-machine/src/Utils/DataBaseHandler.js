@@ -11,3 +11,9 @@ export const removeTransactionValues = () => {
   })}
   {DepositedMoney.map(element => element.depositedMoney = 0)};
 };
+
+export const removeItemsFromStorage = () => {
+  {ProductsDataBase.forEach(element => {
+    element.inStock -= element.inShoppingCart;
+  })}
+};
