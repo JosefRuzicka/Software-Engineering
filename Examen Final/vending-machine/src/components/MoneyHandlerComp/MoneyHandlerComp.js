@@ -1,9 +1,17 @@
 import React from "react";
-import { MoneyDataBase } from "../../DataBaseSimulator/MoneyData";
+import { MoneyDataBase, DepositedMoney} from "../../DataBaseSimulator/MoneyData";
 import { PlusMinusButtonsComp } from '../PlusMinusButtonsComp/PlusMinusButtonsComp';
 import './MoneyHandlerCompStyle.scss'
+import { calculateTotalCost, handleTransaction } from '../../Utils/MathemathicsHandler';
+import { notifyPaymentSuccess } from "../NotificationsComp/NotificationsComp";
+import { removeTransactionValues } from "../../Utils/DataBaseHandler";
 
 export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
+  const handlePayment = () => {
+    let change = handleTransaction();
+    change >= 0 && (notifyPaymentSuccess(change) && removeTransactionValues());
+    setReRenderSwitch( !reRenderSwitch );
+  };
   return (
     <div className="MoneyInsertionSlots">
       <h3> Pay here! </h3>
@@ -19,7 +27,7 @@ export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
       ))}
       <div className="payCancelButtons">
         <button type="submit" className="glow-on-hover-cancel" onClick={null} >Cancel </button>
-        <button type="submit" className="glow-on-hover-pay" onClick={null}>Pay now</button>
+        <button type="submit" className="glow-on-hover-pay" onClick={() => handlePayment()}>Pay now</button>
       </div>
     </div>
   )
