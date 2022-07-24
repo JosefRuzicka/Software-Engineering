@@ -5,10 +5,10 @@ import { ProductsDataBase } from '../../DataBaseSimulator/ProductsData';
 
 export const OfferedBeveragesComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
   return (
-    <div className='parent'>
+    <div className='BeverageDivParent'>
       {ProductsDataBase.map( element => (
         <div className={`div${element.id} divs`}> 
-        <label> {element.name} </label>
+        <img className='logo' src={`../../../assets/${element.logo}`} ></img>
         <label> In stock: {element.inStock} </label>
         <label> ₡ {element.price} </label>
         <PlusMinusButtonsComp 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { OfferedBeveragesComp } from '../OfferedBeveragesComp/OfferedBeveragesComp';
 import { ScreenComp } from '../ScreenComp/ScreenComp';
-import '../OfferedBeveragesComp/OfferedBeveragesCompStyle.scss';
+import './VendingMachineLayoutCompStyle.scss';
 import { useState } from 'react';
 
 export const VendingMachineLayoutComp = () => {

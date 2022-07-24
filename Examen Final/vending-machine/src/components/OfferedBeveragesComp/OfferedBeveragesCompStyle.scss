@@ -1,12 +1,17 @@
-.parent {
+.BeverageDivParent {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
-  width: 100%;
   min-height: 50vh;
   font-size: medium;
+  margin: 1rem;
+}
+.logo {
+  width: 10rem;
+  height: 7rem;
+  align-self: center;
 }
 .divs {
   box-shadow: 0px 0px 10px 0px rgba(115, 115, 115, 0.55);
