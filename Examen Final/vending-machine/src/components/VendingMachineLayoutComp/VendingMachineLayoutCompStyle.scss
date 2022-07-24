@@ -14,19 +14,19 @@
   display: flex;
   flex-direction: column;
 }
-.div0 {
+.div0Layout {
   // border: solid yellow;
   grid-area: 1 / 1 / 2 / 2;
 }
-.div1 {
+.div1Layout {
   // border: solid red;
   grid-area: 1 / 2 / 2 / 3;
 }
-.div2 {
+.div2Layout {
   // border: solid green;
   grid-area: 2 / 1 / 3 / 2;
 }
-.div3 {
+.div3Layout {
   // border: solid blue;
   grid-area: 2 / 2 / 3 / 3;
 }
