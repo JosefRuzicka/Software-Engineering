@@ -8,14 +8,15 @@ export const OfferedBeveragesComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
     <div className='BeverageDivParent'>
       {ProductsDataBase.map( element => (
         <div className={`div${element.id} divs`}> 
-        <img className='logo' src={`../../../assets/${element.logo}`} ></img>
-        <label> In stock: {element.inStock} </label>
-        <label> ₡ {element.price} </label>
-        <PlusMinusButtonsComp 
-          element={element} 
-          reRenderSwitch={reRenderSwitch}
-          setReRenderSwitch={setReRenderSwitch}/>
-      </div>
+          <img className='logo' src={`../../../assets/${element.logo}`} ></img>
+          <label> In stock: {element.inStock} </label>
+          <label> ₡ {element.price} </label>
+          <PlusMinusButtonsComp 
+            element={element} 
+            reRenderSwitch={reRenderSwitch}
+            setReRenderSwitch={setReRenderSwitch}
+          />
+        </div>
       ))} 
     </div>
   );

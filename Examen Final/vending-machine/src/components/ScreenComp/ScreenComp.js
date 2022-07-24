@@ -2,6 +2,7 @@ import React from 'react';
 import './ScreenCompStyle.scss'
 import { ProductsDataBase } from '../../DataBaseSimulator/ProductsData';
 import { calculateTotalCost } from '../../Utils/MathemathicsHandler';
+import { MoneyDataBase, DepositedMoney } from '../../DataBaseSimulator/MoneyData';
 
 export const ScreenComp = ({shoppingCart}) => {
   return (
@@ -14,6 +15,9 @@ export const ScreenComp = ({shoppingCart}) => {
         ))}
         <p> ----------</p>
         <p> Total Cost: {calculateTotalCost()}</p>
+        {DepositedMoney.map(element => (
+          <p> Money Deposited: {element.depositedMoney} </p>
+        ))}
       </div>
     </div>
   );
