@@ -1,11 +1,12 @@
 // Adapted from https://codepen.io/angeladelise/pen/zYKpRqE
 import React from 'react';
-import { useState } from 'react';
 import './PlusMinusButtonsCompStyle.scss';
+import { notifyOutOfStock} from '../NotificationsComp/NotificationsComp';
 
 export const PlusMinusButtonsComp = ({element, reRenderSwitch, setReRenderSwitch}) => {
   const handleAddClick = () => {
-    element.inShoppingCart <= element.inShoppingCart && element.inShoppingCart++;
+    element.inShoppingCart < element.inStock ?
+     element.inShoppingCart++ : notifyOutOfStock();
     setReRenderSwitch( !reRenderSwitch );
   };
   const handleRemoveClick = () => {
