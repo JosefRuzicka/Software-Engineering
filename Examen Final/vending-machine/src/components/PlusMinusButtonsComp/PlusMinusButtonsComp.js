@@ -6,9 +6,10 @@ import { DepositedMoney, MoneyDataBase } from '../../DataBaseSimulator/MoneyData
 
 export const PlusMinusButtonsComp = ({element, reRenderSwitch, setReRenderSwitch}) => {
   const handleAddClick = () => {
-    element.inShoppingCart < element.inStock ?
-    element.inShoppingCart++ : element.category ? element.depositedInCurrentTransaction++
-    && DepositedMoney.map(element2 => element2.depositedMoney += element.value ) :notifyOutOfStock();
+    element.inShoppingCart < element.inStock ? element.inShoppingCart++ :
+    element.category ? DepositedMoney.map(element2 => element2.depositedMoney += element.value ) 
+    && element.depositedInCurrentTransaction++ :
+    notifyOutOfStock();
     setReRenderSwitch( !reRenderSwitch );
   };
   const handleRemoveClick = () => {
