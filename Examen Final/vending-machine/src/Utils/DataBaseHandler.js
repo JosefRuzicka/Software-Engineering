@@ -17,3 +17,9 @@ export const removeItemsFromStorage = () => {
     element.inStock -= element.inShoppingCart;
   })}
 };
+
+export const addDepositedMoneyToStorage = () => {
+  {MoneyDataBase.forEach(element => {
+    element.count += element.depositedInCurrentTransaction;
+  })}
+};
