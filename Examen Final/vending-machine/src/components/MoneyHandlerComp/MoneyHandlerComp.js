@@ -32,7 +32,7 @@ export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
 
   return (
     <div className="MoneyInsertionSlots">
-      <h3> Pay here! </h3>
+      <h3 className="title"> Pay here! </h3>
       {MoneyDataBase.map( element => (
         <div> 
           <label> ₡ {element.value} slot</label>

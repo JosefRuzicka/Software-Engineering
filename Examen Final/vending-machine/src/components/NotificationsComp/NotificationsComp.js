@@ -14,7 +14,7 @@ export const notifyOutOfStock = () => toast.error('Item out of stock!', {
   }
 );
 
-export const notifyPaymentSuccess = (change) => toast.success(`Payment Successful! Your change is: ${change}`, {
+export const notifyPaymentSuccess = (change) => toast.success(`Payment Successful! Your change is: ₡ ${change}`, {
   position: "top-right",
   autoClose: 3500,
   hideProgressBar: false,
@@ -25,7 +25,7 @@ export const notifyPaymentSuccess = (change) => toast.success(`Payment Successfu
   }
 );
 
-export const notifyPaymentFailure = (change) => toast.error(`Insufficient Funds! missing: ${change}`, {
+export const notifyPaymentFailure = (change) => toast.error(`Insufficient Funds! missing: ₡ ${change}`, {
   position: "top-right",
   autoClose: 3500,
   hideProgressBar: false,
