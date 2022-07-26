@@ -4,7 +4,7 @@ import { PlusMinusButtonsComp } from '../PlusMinusButtonsComp/PlusMinusButtonsCo
 import './MoneyHandlerCompStyle.scss'
 import { calculateTotalCost, handleTransaction } from '../../Utils/MathemathicsHandler';
 import { notifyPaymentSuccess, notifyPaymentFailure, notifyTransactionCanceled, notifyChangeReturned } from "../NotificationsComp/NotificationsComp";
-import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage, returnChange } from "../../Utils/DataBaseHandler";
+import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage, returnChange, removeChangeFromStorage } from "../../Utils/DataBaseHandler";
 
 export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
   const handlePayment = () => {
@@ -17,6 +17,7 @@ export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
         notifyChangeReturned(changeReturned);
         removeItemsFromStorage();
         addDepositedMoneyToStorage();
+        removeChangeFromStorage(changeReturned);
         removeTransactionValues();
       }
       // todo vuelto en monedas

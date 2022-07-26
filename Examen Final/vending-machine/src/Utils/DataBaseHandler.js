@@ -24,6 +24,15 @@ export const addDepositedMoneyToStorage = () => {
   })}
 };
 
+export const removeChangeFromStorage = (changeReturned) => {
+  let index = 0;
+  {MoneyDataBase.forEach(element => {
+    element.count -= changeReturned[index];
+    index++;
+  })}
+};
+
+
 export const returnChange = (change) => {
   let billsWorth1000 = 0;
 	let coinsWorth500 = 0;

@@ -49,7 +49,6 @@ export const notifyTransactionCanceled = () => toast.info(`TransactionCanceled!`
 
 export const notifyChangeReturned = (changeReturned) => {
   const currencyTypes = ['1000 bills', '500 coins', '100 coins', '50 coins', '25 coins'];
-  //changeReturned[0] > 1 && notifyChangeReturnedBy1000Bills(changeReturned[0], currencyTypes[0]);
   for (let index = 0; index < changeReturned.length; index++) {
     if (changeReturned[index] > 0) {
       notifyChangeReturnedByCurrencyType(changeReturned[index], currencyTypes[index]);
