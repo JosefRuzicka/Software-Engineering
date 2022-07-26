@@ -68,6 +68,29 @@ export const notifyChangeReturnedByCurrencyType = (changeReturned, value) => toa
   }
 );
 
+export const notifyNotEnoughChange = () => toast.error(<><p>Machine out of change.</p> 
+                                                         <p>Please pay exact price.</p></>,{
+position: "top-right",
+autoClose: 3500,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+}
+);
+
+export const notifyOutOfService = () => toast.error('Machine out of service!', {
+  position: "top-right",
+  autoClose: false,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  }
+);
+
 export const NotificationsComp = () => {
   return (
     <ToastContainer

@@ -3,9 +3,8 @@ import { MoneyDataBase, DepositedMoney} from "../../DataBaseSimulator/MoneyData"
 import { PlusMinusButtonsComp } from '../PlusMinusButtonsComp/PlusMinusButtonsComp';
 import './MoneyHandlerCompStyle.scss'
 import { calculateTotalCost, handleTransaction } from '../../Utils/MathemathicsHandler';
-import { notifyPaymentSuccess, notifyPaymentFailure, notifyTransactionCanceled, notifyChangeReturned } from "../NotificationsComp/NotificationsComp";
-import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage, returnChange, removeChangeFromStorage } from "../../Utils/DataBaseHandler";
-
+import { notifyPaymentSuccess, notifyPaymentFailure, notifyTransactionCanceled, notifyChangeReturned, notifyNotEnoughChange, notifyOutOfService } from "../NotificationsComp/NotificationsComp";
+import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage, returnChange, removeChangeFromStorage, checkMoneyStatus } from "../../Utils/DataBaseHandler";
 export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
   const handlePayment = () => {
     let change = handleTransaction();
@@ -19,8 +18,11 @@ export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
         addDepositedMoneyToStorage();
         removeChangeFromStorage(changeReturned);
         removeTransactionValues();
+        if (!checkMoneyStatus()) {notifyOutOfService();}
+      } 
+      else {
+        notifyNotEnoughChange();
       }
-      // todo vuelto en monedas
     } else {
       change *= -1
       notifyPaymentFailure(change);
@@ -32,7 +34,6 @@ export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
     removeItemsFromStorage();
     removeTransactionValues();
     notifyTransactionCanceled();
-    // todo vuelto en monedas
     setReRenderSwitch( !reRenderSwitch );
   };
 

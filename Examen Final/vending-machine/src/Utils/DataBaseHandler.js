@@ -32,7 +32,6 @@ export const removeChangeFromStorage = (changeReturned) => {
   })}
 };
 
-
 export const returnChange = (change) => {
   let billsWorth1000 = 0;
 	let coinsWorth500 = 0;
@@ -48,15 +47,23 @@ export const returnChange = (change) => {
       change -= currentElement.value;
     }
   }
-  if (change == 0) {
+  if (change === 0) {
     changeByCoins.push(billsWorth1000,coinsWorth500,coinsWorth100,coinsWorth50,coinsWorth25);
   }
   return changeByCoins
 };
 
+export const checkMoneyStatus = () => {
+  let outOfService = false;
+  {MoneyDataBase.forEach(element => {
+    element.count !== 0 && (outOfService = true);
+  })}
+  return outOfService
+} 
+
 const getNextChangeCoin = (change) => {
   let currentElement;
-  change >= 1000 && MoneyDataBase.find(element => (element.value === 1000 && element.count > 0 && (currentElement = element)));
+  change >= 1000 && MoneyDataBase.find(element => ((element.value === 1000 && element.count > 0) && (currentElement = element)));
   change >= 500 && typeof currentElement === 'undefined' && MoneyDataBase.find(element => (element.value === 500 && element.count > 0 && (currentElement = element)));
   change >= 100 && typeof currentElement === 'undefined' && MoneyDataBase.find(element => (element.value === 100 && element.count > 0 && (currentElement = element)));
   change >= 50 && typeof currentElement === 'undefined' && MoneyDataBase.find(element => (element.value === 50 && element.count > 0 && (currentElement = element)));
