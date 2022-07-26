@@ -26,7 +26,7 @@ export const ProductsDataBase = [
   {
     id: 3,
     name: 'Sprite',
-    price: 720,
+    price: 725,
     inStock: 15,
     inShoppingCart: 0,
     logo: 'Sprite Lime-03.jpg'

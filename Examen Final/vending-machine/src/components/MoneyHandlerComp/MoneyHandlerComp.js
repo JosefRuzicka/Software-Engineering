@@ -3,17 +3,22 @@ import { MoneyDataBase, DepositedMoney} from "../../DataBaseSimulator/MoneyData"
 import { PlusMinusButtonsComp } from '../PlusMinusButtonsComp/PlusMinusButtonsComp';
 import './MoneyHandlerCompStyle.scss'
 import { calculateTotalCost, handleTransaction } from '../../Utils/MathemathicsHandler';
-import { notifyPaymentSuccess, notifyPaymentFailure, notifyTransactionCanceled } from "../NotificationsComp/NotificationsComp";
-import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage } from "../../Utils/DataBaseHandler";
+import { notifyPaymentSuccess, notifyPaymentFailure, notifyTransactionCanceled, notifyChangeReturned } from "../NotificationsComp/NotificationsComp";
+import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage, returnChange } from "../../Utils/DataBaseHandler";
 
 export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
   const handlePayment = () => {
     let change = handleTransaction();
     if (change >= 0) {
-      notifyPaymentSuccess(change);
-      removeItemsFromStorage();
-      addDepositedMoneyToStorage();
-      removeTransactionValues();
+      let changeReturned = returnChange(change);
+      console.log(changeReturned);
+      if (changeReturned.length > 0) {
+        notifyPaymentSuccess(change);
+        notifyChangeReturned(changeReturned);
+        removeItemsFromStorage();
+        addDepositedMoneyToStorage();
+        removeTransactionValues();
+      }
       // todo vuelto en monedas
     } else {
       change *= -1
