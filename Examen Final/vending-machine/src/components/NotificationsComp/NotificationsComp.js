@@ -58,8 +58,7 @@ export const notifyChangeReturned = (changeReturned) => {
 }
 
 export const notifyChangeReturnedByCurrencyType = (changeReturned, value) => toast.info(<><p>Returned:</p> 
-                                                                                      <p>{changeReturned} ₡ {value}</p>
-                                                                                      </>,{
+                                                                                      <p>{changeReturned} ₡ {value}</p></>,{
   position: "top-right",
   autoClose: 3500,
   hideProgressBar: false,
@@ -70,46 +69,6 @@ export const notifyChangeReturnedByCurrencyType = (changeReturned, value) => toa
   }
 );
 
-export const notifyChangeReturnedBy600Coins = (changeReturned, value) => toast.info(`Returned: ${changeReturned} ₡ ${value}`, {
-  position: "top-right",
-  autoClose: 3500,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  }
-);
-export const notifyChangeReturnedBy100Coins = (changeReturned, value) => toast.info(`Returned: ${changeReturned} ₡ ${value}`, {
-  position: "top-right",
-  autoClose: 3500,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  }
-);
-export const notifyChangeReturnedBy50Coins = (changeReturned, value) => toast.info(`Returned: ${changeReturned} ₡ ${value}`, {
-  position: "top-right",
-  autoClose: 3500,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  }
-);
-export const notifyChangeReturnedBy25Coins = (changeReturned, value) => toast.info(`Returned: ${changeReturned} ₡ ${value}`, {
-  position: "top-right",
-  autoClose: 3500,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  }
-);
 export const NotificationsComp = () => {
   return (
     <ToastContainer
