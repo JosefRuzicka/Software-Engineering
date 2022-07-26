@@ -1,4 +1,5 @@
 import React from "react";
+import { DepositedMoney, MoneyDataBase } from "../DataBaseSimulator/MoneyData";
 import { ProductsDataBase } from "../DataBaseSimulator/ProductsData";
 
 export const calculateTotalCost = () => {
@@ -6,5 +7,11 @@ export const calculateTotalCost = () => {
   ProductsDataBase.forEach(element => {
     element.inShoppingCart > 0 && (totalCost += (element.inShoppingCart * element.price));   
   });
-  return totalCost
+  return totalCost;
 };
+
+export const handleTransaction = () => {
+  let change = 0;
+  DepositedMoney.map(element => change = (element.depositedMoney - calculateTotalCost()))
+  return change;
+}
