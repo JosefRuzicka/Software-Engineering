@@ -6,7 +6,7 @@ import { handleTransaction } from '../../Utils/MathemathicsHandler';
 import { notifyPaymentSuccess, notifyPaymentFailure, notifyTransactionCanceled, notifyChangeReturned, notifyNotEnoughChange, notifyOutOfService } from "../NotificationsComp/NotificationsComp";
 import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage, returnChange, removeChangeFromStorage, checkMoneyStatus } from "../../Utils/DataBaseHandler";
 
-export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
+export const MoneyHandlerComp = ({ reRenderSwitch, setReRenderSwitch }) => {
   const handlePayment = () => {
     let change = handleTransaction();
     if (change >= 0) {
@@ -19,8 +19,8 @@ export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
         addDepositedMoneyToStorage();
         removeChangeFromStorage(changeReturned);
         removeTransactionValues();
-        if (!checkMoneyStatus()) {notifyOutOfService();}
-      } 
+        if (!checkMoneyStatus()) { notifyOutOfService(); }
+      }
       else {
         notifyNotEnoughChange();
       }
@@ -28,34 +28,36 @@ export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
       change *= -1
       notifyPaymentFailure(change);
     }
-    setReRenderSwitch( !reRenderSwitch );
+    setReRenderSwitch(!reRenderSwitch);
   };
 
   const handleCancel = () => {
     removeItemsFromStorage();
     removeTransactionValues();
     notifyTransactionCanceled();
-    setReRenderSwitch( !reRenderSwitch );
+    setReRenderSwitch(!reRenderSwitch);
   };
 
   return (
-    <div className="MoneyInsertionSlots">
-      <h3 className="title"> Pay here! </h3>
-      {MoneyDataBase.map( element => (
-        <div> 
-          <label> ₡ {element.value} slot</label>
-          <PlusMinusButtonsComp 
-            element={element} 
-            reRenderSwitch={reRenderSwitch}
-            setReRenderSwitch={setReRenderSwitch}
-          />
-        </div>
-      ))}
+    <>
+      <div className="MoneyInsertionSlots">
+        <h3 className="title"> Pay here! </h3>
+        {MoneyDataBase.map(element => (
+          <div>
+            <label> ₡ {element.value} slot</label>
+            <PlusMinusButtonsComp
+              element={element}
+              reRenderSwitch={reRenderSwitch}
+              setReRenderSwitch={setReRenderSwitch}
+            />
+          </div>
+        ))}
+      </div>
       <div className="payCancelButtons">
         <button type="submit" className="glow-on-hover-cancel" onClick={() => handleCancel()} >Cancel </button>
         <button type="submit" className="glow-on-hover-pay" onClick={() => handlePayment()}>Pay now</button>
       </div>
-    </div>
+    </>
   )
 }
 
