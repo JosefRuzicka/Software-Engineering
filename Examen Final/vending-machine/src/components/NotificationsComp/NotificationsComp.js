@@ -36,7 +36,7 @@ export const notifyPaymentFailure = (change) => toast.error(`Insufficient Funds!
   }
 );
 
-export const notifyTransactionCanceled = () => toast.info(`TransactionCanceled!`, {
+export const notifyTransactionCanceled = () => toast.info(`Transaction Canceled!`, {
   position: "top-right",
   autoClose: 3500,
   hideProgressBar: false,
