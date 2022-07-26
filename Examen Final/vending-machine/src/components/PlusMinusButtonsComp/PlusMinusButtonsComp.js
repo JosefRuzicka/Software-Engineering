@@ -3,20 +3,14 @@ import React from 'react';
 import './PlusMinusButtonsCompStyle.scss';
 import { notifyOutOfStock} from '../NotificationsComp/NotificationsComp';
 import { DepositedMoney } from '../../DataBaseSimulator/MoneyData';
+import { handleAddButton, handleRemoveButton } from '../../Utils/ButtonHandler';
 
 export const PlusMinusButtonsComp = ({element, reRenderSwitch, setReRenderSwitch}) => {
   const handleAddClick = () => {
-    element.inShoppingCart < element.inStock ? element.inShoppingCart++ :
-    element.category ? DepositedMoney.map(element2 => element2.depositedMoney += element.value ) 
-    && element.depositedInCurrentTransaction++ :
-    notifyOutOfStock();
-    setReRenderSwitch( !reRenderSwitch );
+    handleAddButton({element, reRenderSwitch, setReRenderSwitch});
   };
   const handleRemoveClick = () => {
-    element.inShoppingCart > 0 ? element.inShoppingCart-- :
-    element.depositedInCurrentTransaction > 0 && element.depositedInCurrentTransaction-- 
-    && DepositedMoney.map(element2 => element2.depositedMoney -= element.value );
-    setReRenderSwitch( !reRenderSwitch );
+    handleRemoveButton({element, reRenderSwitch, setReRenderSwitch});
   };
 
   return (
