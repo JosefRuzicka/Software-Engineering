@@ -2,7 +2,7 @@
 import React from 'react';
 import './PlusMinusButtonsCompStyle.scss';
 import { notifyOutOfStock} from '../NotificationsComp/NotificationsComp';
-import { DepositedMoney, MoneyDataBase } from '../../DataBaseSimulator/MoneyData';
+import { DepositedMoney } from '../../DataBaseSimulator/MoneyData';
 
 export const PlusMinusButtonsComp = ({element, reRenderSwitch, setReRenderSwitch}) => {
   const handleAddClick = () => {
