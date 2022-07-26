@@ -1,10 +1,11 @@
 import React from "react";
-import { MoneyDataBase, DepositedMoney} from "../../DataBaseSimulator/MoneyData";
+import { MoneyDataBase } from "../../DataBaseSimulator/MoneyData";
 import { PlusMinusButtonsComp } from '../PlusMinusButtonsComp/PlusMinusButtonsComp';
 import './MoneyHandlerCompStyle.scss'
-import { calculateTotalCost, handleTransaction } from '../../Utils/MathemathicsHandler';
+import { handleTransaction } from '../../Utils/MathemathicsHandler';
 import { notifyPaymentSuccess, notifyPaymentFailure, notifyTransactionCanceled, notifyChangeReturned, notifyNotEnoughChange, notifyOutOfService } from "../NotificationsComp/NotificationsComp";
 import { removeTransactionValues, removeItemsFromStorage, addDepositedMoneyToStorage, returnChange, removeChangeFromStorage, checkMoneyStatus } from "../../Utils/DataBaseHandler";
+
 export const MoneyHandlerComp = ( {reRenderSwitch, setReRenderSwitch} ) => {
   const handlePayment = () => {
     let change = handleTransaction();
