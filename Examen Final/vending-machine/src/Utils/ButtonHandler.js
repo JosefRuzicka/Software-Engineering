@@ -4,8 +4,7 @@ import { DepositedMoney } from '../DataBaseSimulator/MoneyData';
 export const handleAddButton = (element, reRenderSwitch, setReRenderSwitch) => {
   element.inShoppingCart < element.inStock ? element.inShoppingCart++ :
   element.category ? DepositedMoney.map(element2 => element2.depositedMoney += element.value ) 
-  && element.depositedInCurrentTransaction++ :
-  notifyOutOfStock();
+  && element.depositedInCurrentTransaction++ : notifyOutOfStock();
   setReRenderSwitch !== undefined && setReRenderSwitch( !reRenderSwitch );
 };
 
