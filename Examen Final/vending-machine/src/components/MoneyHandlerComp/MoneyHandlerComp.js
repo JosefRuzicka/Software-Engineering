@@ -32,7 +32,6 @@ export const MoneyHandlerComp = ({ reRenderSwitch, setReRenderSwitch }) => {
   };
 
   const handleCancel = () => {
-    removeItemsFromStorage();
     removeTransactionValues();
     notifyTransactionCanceled();
     setReRenderSwitch(!reRenderSwitch);
