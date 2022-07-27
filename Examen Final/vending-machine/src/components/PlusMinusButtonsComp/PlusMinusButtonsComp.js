@@ -5,10 +5,10 @@ import { handleAddButton, handleRemoveButton } from '../../Utils/ButtonHandler';
 
 export const PlusMinusButtonsComp = ({element, reRenderSwitch, setReRenderSwitch}) => {
   const handleAddClick = () => {
-    handleAddButton({element, reRenderSwitch, setReRenderSwitch});
+    handleAddButton(element, reRenderSwitch, setReRenderSwitch);
   };
   const handleRemoveClick = () => {
-    handleRemoveButton({element, reRenderSwitch, setReRenderSwitch});
+    handleRemoveButton(element, reRenderSwitch, setReRenderSwitch);
   };
 
   return (
