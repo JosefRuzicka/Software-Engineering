@@ -61,7 +61,7 @@ export const checkMoneyStatus = () => {
   return outOfService
 } 
 
-const getNextChangeCoin = (change) => {
+export const getNextChangeCoin = (change) => {
   let currentElement;
   change >= 1000 && MoneyDataBase.find(element => ((element.value === 1000 && element.count > 0) && (currentElement = element)));
   change >= 500 && typeof currentElement === 'undefined' && MoneyDataBase.find(element => (element.value === 500 && element.count > 0 && (currentElement = element)));
